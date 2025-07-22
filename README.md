@@ -16,13 +16,12 @@ This service provides a simple API to index and search markdown (or any text) co
 
 2. **Start Meilisearch with a master key:**
    ```bash
-   ./meilisearch --http-addr '0.0.0.0:7700' --master-key 'your-master-key'
+   ./meilisearch --http-addr '0.0.0.0:7700'
    ```
 
 3. **Set your OpenAI API key in the environment:**
    ```bash
    export OPENAI_API_KEY="sk-..."  # your real OpenAI key
-   export MEILI_MASTER_KEY="your-master-key"  # same as above
    ```
 
 4. **Run the API service:**
@@ -70,9 +69,3 @@ This service provides a simple API to index and search markdown (or any text) co
     { "id": 1, "title": "AI-Powered Search Guide", "content": "...", "ad": "Try our AI search!", ... }
   ]
   ```
-
-## Notes
-- Make sure Meilisearch is running with the vector store experimental feature enabled and the OpenAI embedder configured.
-- The FastAPI service will attempt to configure the embedder automatically, but you can also do it manually via the Meilisearch API.
-- All search and index operations go directly to Meilisearch; there is no local DB.
-- You must provide your own OpenAI API key and Meilisearch master key. 
