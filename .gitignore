@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Logs
+log/
+*.log
+
+# Meilisearch data and dumps
+data.ms/
+dumps/
+
+# Environment files
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Meilisearch binary
+meilisearch
+
+# SQLite or other DB files
+*.db
