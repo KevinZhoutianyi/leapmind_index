@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# ./meilisearch --http-addr '0.0.0.0:7700'
 APP_DIR="/home/ec2-user/leapmind_index"
 APP_MODULE="service:app"
 HOST="0.0.0.0"
@@ -9,6 +9,18 @@ PID_FILE="$LOG_DIR/uvicorn.pid"
 LOG_FILE="$LOG_DIR/server.log"
 
 cd "$APP_DIR"
+
+# Load .env if exists
+if [ -f .env ]; then
+    export $(grep -v '^#' .env | xargs)
+fi
+
+# Check OPENAI_API_KEY
+if [ -z "$OPENAI_API_KEY" ]; then
+    echo "[manage_server.sh] WARNING: OPENAI_API_KEY is not set!"
+else
+    echo "[manage_server.sh] Using OPENAI_API_KEY: ${OPENAI_API_KEY:0:8}..."
+fi
 
 start() {
     if [ -f "$PID_FILE" ] && kill -0 $(cat "$PID_FILE") 2>/dev/null; then

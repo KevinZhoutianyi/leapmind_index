@@ -9,7 +9,7 @@ log/
 # Meilisearch data and dumps
 data.ms/
 dumps/
-
+*.csv
 # Environment files
 .env
 .env.*
